@@ -1,9 +1,6 @@
 package com.example.studiesmanagment.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -14,6 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -30,6 +28,7 @@ public class Student {
     private int age;
     @Email(message = "Email is invalid")
     private String email;
+    @Enumerated(EnumType.STRING)
     private Major major;
     @ManyToMany
     @JoinTable(name = "student_teacher",

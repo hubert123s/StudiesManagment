@@ -1,17 +1,16 @@
 package com.example.studiesmanagment.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -28,6 +27,7 @@ public class Teacher {
     private int age;
     @Email(message = "Email is invalid")
     private String email;
+    @Enumerated(EnumType.STRING)
     private Subject subject;
     @ManyToMany
     @JoinTable(name = "student_teacher",
